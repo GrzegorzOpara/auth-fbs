@@ -1,9 +1,9 @@
-
+import { Button } from 'react-bootstrap';
 
 function App() {
   return (
     <div className="App">
-      App
+      <Button variant="warning">Warning</Button>{' '}
     </div>
   );
 }
