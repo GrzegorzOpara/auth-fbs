@@ -1,5 +1,5 @@
 {
-  "name": "auth-fbs-fe",
+  "name": "auth-fbs",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
