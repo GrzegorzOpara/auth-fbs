@@ -10,14 +10,16 @@ const SignUp = () => {
     const [password, setPassword] = useState(null)
     const [error, setError] = useState(null)
 
-    const { signUpUser } = UserAuth()
+    const { signUpUser, sendVerificationEmail } = UserAuth()
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => { 
         e.preventDefault()
         try {
-            await signUpUser(email, password)
-            navigate('/profile')
+            const {user} = await signUpUser(email, password)
+            console.log(user)
+            await sendVerificationEmail()
+            // navigate('/profile')
             
         } catch (e) {
             setError(e.message)

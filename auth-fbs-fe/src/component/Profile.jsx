@@ -10,6 +10,8 @@ const Profile = () => {
     const [error, setError] = useState(null)
     const navigate = useNavigate()
 
+    console.log(user)
+
     const handleClick = async () => { 
         try {
             await signOutUser()
@@ -26,6 +28,7 @@ const Profile = () => {
             <Row className="justify-content-md-center">
                 <Col md="4">
                     <h1 className='mb-4 text-center'>Welcome, {user && user.email}</h1>
+                    {!user.emailVerified && <p>email not verfied!</p> }
                     <Container>
                         <Row className="justify-content-md-center text-center">
                             <Button className='mb-3' variant="primary" onClick={ () => handleClick() }>
