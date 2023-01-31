@@ -47,7 +47,10 @@ const SignIn = () => {
                                     Sign In
                                 </Button>
                                 <p>
-                                    Not a member? <Link to='/signUp'>Sign Up</Link>
+                                    Forgot you password? <Link to='/signUp'>Reset your password</Link>
+                                </p>
+                                <p>
+                                    Not a member? <Link to='/signUp'>Sign up</Link>
                                 </p>
                             </Row>
                         </Container>

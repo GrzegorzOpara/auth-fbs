@@ -17,7 +17,6 @@ const SignUp = () => {
         e.preventDefault()
         try {
             const {user} = await signUpUser(email, password)
-            console.log(user)
             await sendVerificationEmail()
             // navigate('/profile')
             
