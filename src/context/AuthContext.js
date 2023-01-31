@@ -4,8 +4,6 @@ import { auth } from '../firebase'
 
 const UserContext = createContext()
 
-console.log(process.env.REACT_APP_APIKEY)
-
 export const AuthContextProvider = ({children}) => {
 
     const [user, setUser] = useState({});
