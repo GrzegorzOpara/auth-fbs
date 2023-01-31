@@ -8,7 +8,7 @@ const SignIn = () => {
 
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
-    const [error, setError] = useState(null)
+    // const [error, setError] = useState(null)
 
     const { signInUser } = UserAuth()
     const navigate = useNavigate()
@@ -20,7 +20,7 @@ const SignIn = () => {
             navigate('/profile')
             
         } catch (e) {
-            setError(e.message)
+            // setError(e.message)
             console.log(e)
         }
 

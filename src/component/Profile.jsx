@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+// import { useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Profile = () => {
 
     const { user, signOutUser } = UserAuth();
-    const [error, setError] = useState(null)
+    // const [error, setError] = useState(null)
     const navigate = useNavigate()
 
     console.log(user)
@@ -18,7 +18,7 @@ const Profile = () => {
             navigate('/signin')
             
         } catch (e) {
-            setError(e.message)
+            // setError(e.message)
             console.log(e)
         }
     }
