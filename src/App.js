@@ -8,7 +8,6 @@ import PrivateRoutes from './utils/PrivateRoutes';
 
 function App() {
 
-  console.log(process.env.REACT_APP_APIKEY)
   return (    
     <BrowserRouter>
       <AuthContextProvider>
