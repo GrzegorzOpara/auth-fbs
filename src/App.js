@@ -7,7 +7,7 @@ import Profile from './component/Profile';
 import PrivateRoutes from './utils/PrivateRoutes';
 
 function App() {
-  return (
+  return (    
     <BrowserRouter>
       <AuthContextProvider>
         <Routes>
