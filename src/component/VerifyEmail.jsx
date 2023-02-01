@@ -23,7 +23,7 @@ const VerifyEmail = () => {
 
         handleVerifyEmail()
     
-    }, [])
+    })
     
 
     return (
@@ -31,8 +31,8 @@ const VerifyEmail = () => {
             <Row className="justify-content-md-center">
                 <Col md="5">
                     <h1 className='mb-4 text-center'>Email verification</h1>
-                    {verificationStatus? <p>Thank you for veryfing your email, please proceed to <Link to='/signin'>sign in</Link> page.</p> : null}
-                    {error? <p>An error occured: <b>{error}</b>, please try again.</p>: null}
+                    {verificationStatus? <p className='text-center'>Thank you for veryfing your email, please proceed to <Link to='/signin'>sign in</Link> page.</p> : null}
+                    {error? <p className='text-center'>An error occured: <b>{error}</b>, please try again.</p>: null}
                 </Col>
             </Row>
         </Container>
