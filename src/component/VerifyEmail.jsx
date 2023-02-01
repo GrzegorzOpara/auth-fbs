@@ -16,10 +16,8 @@ const VerifyEmail = () => {
             try {
                 await checkEmailValidation(searchParams.get('oobCode'))
                 setVerificationStatus(true)
-                console.log('Verfication completed')
             } catch (e) {
                 setError(e.message)
-                console.log('Verfication failed')
             }           
         }
 
@@ -32,7 +30,7 @@ const VerifyEmail = () => {
         <Container fluid='md'>
             <Row className="justify-content-md-center">
                 <Col md="5">
-                    <h1>Email verification</h1>
+                    <h1 className='mb-4 text-center'>Email verification</h1>
                     {verificationStatus? <p>Thank you for veryfing your email, please proceed to <Link to='/signin'>sign in</Link> page.</p> : null}
                     {error? <p>An error occured: <b>{error}</b>, please try again.</p>: null}
                 </Col>

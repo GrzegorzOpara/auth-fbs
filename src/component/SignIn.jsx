@@ -30,7 +30,7 @@ const SignIn = () => {
         <Container fluid='md'>
             <Row className="justify-content-md-center">
                 <Col md="4">
-                    <h1 className='mb-4 text-center'>Sign In </h1>
+                    <h1 className='mb-4 text-center'>Sign In</h1>
                     <Form onSubmit={(e) => handleSubmit(e)}>
                         <Form.Group className="mb-3">
                             <Form.Label>Email address</Form.Label>
