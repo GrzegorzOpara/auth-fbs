@@ -10,20 +10,32 @@ const VerifyEmail = () => {
     const [error, setError] = useState(null)
     const { checkEmailValidation } = UserAuth()
 
+    
 
-    useEffect(() => {
+    useEffect(() => {    
+
+        let isCancelled = false;
         const handleVerifyEmail = async () => {
             try {
                 await checkEmailValidation(searchParams.get('oobCode'))
-                setVerificationStatus(true)
+                if (!isCancelled) {
+                    setVerificationStatus(true)
+                    console.log('there')
+                }
             } catch (e) {
-                setError(e.message)
+                if (!isCancelled) {
+                    console.log('here')
+                    setError(e.message)
+                }
             }           
         }
-        
+
         handleVerifyEmail()
 
-    })
+        return () => {
+            isCancelled = true
+        }
+    },[])
     
 
     return (
