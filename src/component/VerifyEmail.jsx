@@ -20,11 +20,10 @@ const VerifyEmail = () => {
                 setError(e.message)
             }           
         }
-        return () => { 
-            handleVerifyEmail() 
-        }
-    
-    }, [])
+        
+        handleVerifyEmail()
+
+    })
     
 
     return (
