@@ -1,0 +1,42 @@
+import React, { useEffect, useState } from 'react'
+import { useSearchParams, Link } from 'react-router-dom'
+import { Container, Row, Col } from 'react-bootstrap';
+import { UserAuth } from '../context/AuthContext';
+
+const VerifyEmail = () => {
+
+    const [searchParams] = useSearchParams();
+    const [verificationStatus, setVerificationStatus] = useState(false)
+    const [error, setError] = useState(null)
+    const { checkEmailValidation } = UserAuth()
+
+
+    useEffect(() => {
+        const handleVerifyEmail = async () => {
+            try {
+                await checkEmailValidation(searchParams.get('oobCode'))
+                setVerificationStatus(true)
+            } catch (e) {
+                setError(e.message)
+            }
+        }
+    
+      return () => {
+        handleVerifyEmail()
+      }
+    }, [])
+    
+
+    return (
+        <Container fluid='md'>
+            <Row className="justify-content-md-center">
+                <Col md="5">
+                    {verificationStatus? <p>Thank you for veryfing your email, please proceed to <Link to='/signin'>sign in</Link> page.</p> : null}
+                    {error? <p>An error occured: <b>{error}</b>, please try again.</p>: null}
+                </Col>
+            </Row>
+        </Container>
+    )
+}
+
+export default VerifyEmail
