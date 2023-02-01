@@ -16,8 +16,10 @@ const VerifyEmail = () => {
             try {
                 await checkEmailValidation(searchParams.get('oobCode'))
                 setVerificationStatus(true)
+                console.log('Verfication completed')
             } catch (e) {
                 setError(e.message)
+                console.log('Verfication failed')
             }
         }
     
