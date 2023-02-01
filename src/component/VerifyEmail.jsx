@@ -22,10 +22,12 @@ const VerifyEmail = () => {
             //     console.log('Verfication failed')
             // }
             console.log('here')
+            
         }
+        handleVerifyEmail()
     
       return () => {
-        handleVerifyEmail()
+        // handleVerifyEmail()
       }
     }, [])
     
