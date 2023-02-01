@@ -25,7 +25,7 @@ export const AuthContextProvider = ({children}) => {
     }
 
     const checkEmailValidation = (oobCode) => {
-        return checkActionCode(auth, oobCode)
+        return applyActionCode(auth, oobCode)
     }
 
     useEffect(() => {
