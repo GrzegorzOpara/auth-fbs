@@ -19,7 +19,7 @@ const Profile = () => {
             
         } catch (e) {
             // setError(e.message)
-            console.log(e)
+            console.log(e.message)
         }
     }
 
