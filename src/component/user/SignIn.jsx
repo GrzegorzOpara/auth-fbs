@@ -1,40 +1,38 @@
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import { UserAuth } from '../context/AuthContext';
 import { useState } from 'react';
+import { UserAuth } from '../../context/AuthContext';
 
-const SignUp = () => {
+const SignIn = () => {
 
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
 
-    const { signUpUser, sendVerificationEmail } = UserAuth()
+    const { signInUser } = UserAuth()
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => { 
         e.preventDefault()
         try {
-            await signUpUser(email, password)
-            await sendVerificationEmail()
-            navigate('/')
+            await signInUser(email, password)
+            navigate('/profile')
             
         } catch (e) {
-            // setError(e.message)
             alert(e.message)
         }
+
     }
 
     return (
         <Container fluid='md'>
             <Row className="justify-content-md-center">
                 <Col md="4">
-                    <h1 className='mb-4 text-center'>Sign Up</h1>
-                    <Form onSubmit={(e) => handleSubmit(e)}> 
+                    <h1 className='mb-4 text-center'>Sign In</h1>
+                    <Form onSubmit={(e) => handleSubmit(e)}>
                         <Form.Group className="mb-3">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)}/>
-                            <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
                         </Form.Group>
 
                         <Form.Group className="mb-3">
@@ -44,10 +42,13 @@ const SignUp = () => {
                         <Container>
                             <Row className="justify-content-md-center text-center">
                                 <Button className='mb-3' variant="primary" type="submit">
-                                    Sign Up
+                                    Sign In
                                 </Button>
                                 <p>
-                                    Already have an account? <Link to='/signin'>Sign in</Link>
+                                    Forgot you password? <Link to='/userselfservice/action?mode=resetRequest'>Reset your password</Link>
+                                </p>
+                                <p>
+                                    Not a member? <Link to='/signUp'>Sign up</Link>
                                 </p>
                             </Row>
                         </Container>
@@ -56,6 +57,6 @@ const SignUp = () => {
             </Row>
         </Container>
     )
-    }
+}
 
-export default SignUp
+export default SignIn

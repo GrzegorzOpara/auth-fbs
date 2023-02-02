@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AuthContextProvider } from './context/AuthContext';
-import SignIn from './component/SignIn'
-import SignUp from './component/SignUp'
-import Profile from './component/Profile';
+import SignIn from './component/user/SignIn'
+import SignUp from './component/user/SignUp'
+import Profile from './component/user/Profile';
 import PrivateRoutes from './utils/PrivateRoutes';
-import UserSelfService from './component/UserSelfService'
+import UserSelfService from './component/user/UserSelfService'
 
 function App() {
 

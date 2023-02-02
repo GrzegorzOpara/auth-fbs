@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
-import VerifyEmail from '../component/VerifyEmail';
-import PasswordResetReqest from '../component/PasswordResetReqest'
-import PasswordReset from '../component/PasswordReset'
+import VerifyEmail from './VerifyEmail';
+import PasswordResetReqest from './PasswordResetReqest'
+import PasswordReset from './PasswordReset'
 
 const UserSelfService = () => {
 

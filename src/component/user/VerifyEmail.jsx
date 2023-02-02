@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { Container, Row, Col } from 'react-bootstrap';
-import { UserAuth } from '../context/AuthContext';
+import { UserAuth } from '../../context/AuthContext';
 
 const VerifyEmail = () => {
 
@@ -36,6 +36,7 @@ const VerifyEmail = () => {
         return () => {
             isCancelled = true
         }
+        // eslint-disable-next-line
     },[])
     
 
