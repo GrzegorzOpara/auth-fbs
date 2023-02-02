@@ -8,7 +8,6 @@ const SignIn = () => {
 
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
-    // const [error, setError] = useState(null)
 
     const { signInUser } = UserAuth()
     const navigate = useNavigate()
@@ -20,8 +19,7 @@ const SignIn = () => {
             navigate('/profile')
             
         } catch (e) {
-            // setError(e.message)
-            console.log(e)
+            alert(e.message)
         }
 
     }
@@ -47,7 +45,7 @@ const SignIn = () => {
                                     Sign In
                                 </Button>
                                 <p>
-                                    Forgot you password? <Link to='/signUp'>Reset your password</Link>
+                                    Forgot you password? <Link to='/userselfservice/action?mode=resetRequest'>Reset your password</Link>
                                 </p>
                                 <p>
                                     Not a member? <Link to='/signUp'>Sign up</Link>

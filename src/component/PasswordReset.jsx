@@ -1,27 +1,48 @@
 import React from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 
 
 
 const PasswordReset = () => {
-    const [email, setEmail] = useState(null)
+    const [password, setPassword] = useState(null)
+    const [searchParams] = useSearchParams();
 
-    const { signInUser } = UserAuth()
+    const { userVerifyPasswordResetCode, userConfirmPasswordReset } = UserAuth()
 
     const handleSubmit = async (e) => { 
         e.preventDefault()
-        try {
-    
-            
-            
-        } catch (e) {
-            // setError(e.message)
-            console.log(e)
+
+        const verifyCode = async () => {
+
+            try {
+                const response = await userVerifyPasswordResetCode(searchParams.get('oobCode'))
+                return [response, null]
+            } catch (e) {
+                console.log('1')
+                alert(e.message)
+                return [null, e]
+            }
         }
-    
+
+        const setNewPassword = async () => {
+            try {
+                const response = await userConfirmPasswordReset(searchParams.get('oobCode'), password)
+                return [response, null]
+            } catch (e) {
+                console.log('2')
+                alert(e.message)
+                return [null, e]
+            }
+        }
+
+        const [resp, error] = await verifyCode()
+        if (!error && resp) {
+            await setNewPassword()
+        }
+              
     }
 
     return (
@@ -32,7 +53,7 @@ const PasswordReset = () => {
                     <Form onSubmit={(e) => handleSubmit(e)}>
                         <Form.Group className="mb-3">
                             <Form.Label>New password</Form.Label>
-                            <Form.Control type="password" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)}/>
+                            <Form.Control type="password" placeholder="Enter email" onChange={(e) => setPassword(e.target.value)}/>
                         </Form.Group>
 
                         <Container>

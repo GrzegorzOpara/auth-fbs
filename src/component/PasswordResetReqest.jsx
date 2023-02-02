@@ -21,7 +21,7 @@ const PasswordResetReqest = () => {
             setTimeout(() => { navigate("/") },3000);
         } catch (e) {
             // setError(e.message)
-            if (e.message == 'Firebase: Error (auth/user-not-found).')
+            if (e.message === 'Firebase: Error (auth/user-not-found).')
                 setInfo(`This email dosen't exist in our records.`);
             else
                 setInfo(`Something went wrong, please try again.`);

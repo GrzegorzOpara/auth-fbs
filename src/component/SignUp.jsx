@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { UserAuth } from '../context/AuthContext';
 import { useState } from 'react';
@@ -8,21 +8,20 @@ const SignUp = () => {
 
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
-    // const [error, setError] = useState(null)
 
     const { signUpUser, sendVerificationEmail } = UserAuth()
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => { 
         e.preventDefault()
         try {
             await signUpUser(email, password)
             await sendVerificationEmail()
-            // navigate('/profile')
+            navigate('/')
             
         } catch (e) {
             // setError(e.message)
-            console.log(e)
+            alert(e.message)
         }
     }
 

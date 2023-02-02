@@ -1,8 +1,9 @@
 import { useContext, createContext, useState, useEffect } from 'react'
 import { 
-        checkActionCode, 
         applyActionCode, 
         sendPasswordResetEmail, 
+        verifyPasswordResetCode, 
+        confirmPasswordReset,
         createUserWithEmailAndPassword, 
         signInWithEmailAndPassword, 
         signOut, 
@@ -41,6 +42,14 @@ export const AuthContextProvider = ({children}) => {
         return sendPasswordResetEmail(auth, email)
     }
 
+    const userVerifyPasswordResetCode = (oobCode) => {
+        return verifyPasswordResetCode(auth, oobCode)
+    }
+
+    const userConfirmPasswordReset = (oobCode, password) => {
+        return confirmPasswordReset(auth, oobCode, password)
+    }
+
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser)
@@ -57,7 +66,9 @@ export const AuthContextProvider = ({children}) => {
         signOutUser: signOutUser,
         sendVerificationEmail: sendVerificationEmail,
         checkEmailValidation: checkEmailValidation,
-        userSendPasswordResetEmail: userSendPasswordResetEmail
+        userSendPasswordResetEmail: userSendPasswordResetEmail,
+        userVerifyPasswordResetCode: userVerifyPasswordResetCode,
+        userConfirmPasswordReset: userConfirmPasswordReset
     }
 
     return (

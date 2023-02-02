@@ -14,6 +14,8 @@ const VerifyEmail = () => {
 
     useEffect(() => {    
 
+        console.log(searchParams.get('oobCode'))
+
         let isCancelled = false;
         const handleVerifyEmail = async () => {
             try {
@@ -24,7 +26,6 @@ const VerifyEmail = () => {
                 }
             } catch (e) {
                 if (!isCancelled) {
-                    console.log('here')
                     setError(e.message)
                 }
             }           
