@@ -21,7 +21,6 @@ const PasswordReset = () => {
                 const response = await userVerifyPasswordResetCode(searchParams.get('oobCode'))
                 return [response, null]
             } catch (e) {
-                console.log('1')
                 alert(e.message)
                 return [null, e]
             }
@@ -32,7 +31,6 @@ const PasswordReset = () => {
                 const response = await userConfirmPasswordReset(searchParams.get('oobCode'), password)
                 return [response, null]
             } catch (e) {
-                console.log('2')
                 alert(e.message)
                 return [null, e]
             }
