@@ -3,14 +3,13 @@ import React from 'react'
 import { UserAuth } from '../../context/AuthContext';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import Avatar from './Avatar';
 
 const Profile = () => {
 
     const { user, signOutUser } = UserAuth();
     // const [error, setError] = useState(null)
     const navigate = useNavigate()
-
-    console.log(user)
 
     const handleClick = async () => { 
         try {
@@ -19,18 +18,19 @@ const Profile = () => {
             
         } catch (e) {
             // setError(e.message)
-            console.log(e.message)
+            alert(e.message)
         }
     }
 
     return (
         <Container fluid='md'>
             <Row className="justify-content-md-center">
-                <Col md="4">
-                    <h1 className='mb-4 text-center'>Welcome, {user && user.email}</h1>
-                    {!user.emailVerified && <p>email not verfied!</p> }
+                <Col md="5">
                     <Container>
                         <Row className="justify-content-md-center text-center">
+                            <h2 className='mt-4 text-center'>{user && user.email}</h2>
+                            {!user.emailVerified && <p><i>email not verfied!</i></p> }
+                            <Avatar className='mt-4' />
                             <Button className='mb-3' variant="primary" onClick={ () => handleClick() }>
                                 Log out
                             </Button>
