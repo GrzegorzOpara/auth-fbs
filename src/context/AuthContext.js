@@ -8,7 +8,8 @@ import {
         signInWithEmailAndPassword, 
         signOut, 
         onAuthStateChanged, 
-        sendEmailVerification 
+        sendEmailVerification,
+        updateProfile
     } from 'firebase/auth'
 import { auth } from '../firebase'
 
@@ -50,6 +51,10 @@ export const AuthContextProvider = ({children}) => {
         return confirmPasswordReset(auth, oobCode, password)
     }
 
+    const updateUser = (props) => {
+        return updateProfile(auth.currentUser, props)
+    }
+
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser)
@@ -68,7 +73,8 @@ export const AuthContextProvider = ({children}) => {
         checkEmailValidation: checkEmailValidation,
         userSendPasswordResetEmail: userSendPasswordResetEmail,
         userVerifyPasswordResetCode: userVerifyPasswordResetCode,
-        userConfirmPasswordReset: userConfirmPasswordReset
+        userConfirmPasswordReset: userConfirmPasswordReset,
+        updateUser: updateUser
     }
 
     return (
