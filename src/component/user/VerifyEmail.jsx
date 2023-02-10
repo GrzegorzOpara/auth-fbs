@@ -13,16 +13,12 @@ const VerifyEmail = () => {
     
 
     useEffect(() => {    
-
-        console.log(searchParams.get('oobCode'))
-
         let isCancelled = false;
         const handleVerifyEmail = async () => {
             try {
                 await checkEmailValidation(searchParams.get('oobCode'))
                 if (!isCancelled) {
                     setVerificationStatus(true)
-                    console.log('there')
                 }
             } catch (e) {
                 if (!isCancelled) {
