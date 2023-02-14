@@ -5,11 +5,17 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Avatar from './Avatar';
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL
+
 const Profile = () => {
 
     const { user, signOutUser } = UserAuth();
     // const [error, setError] = useState(null)
     const navigate = useNavigate()
+
+    const getProfileData = async () => {
+        
+    }
 
     const handleClick = async () => { 
         try {
