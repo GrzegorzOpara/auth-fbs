@@ -9,7 +9,7 @@ const Avatar = () => {
 
     const { user, updateUser } = UserAuth();
     const [ avatar, setAvatar ] = useState(user.photoURL)
-    const [ error, setError ] = useState(null)
+    // const [ error, setError ] = useState(null)
 
     const handleAvatarFileChange = (e) => { 
         try {
