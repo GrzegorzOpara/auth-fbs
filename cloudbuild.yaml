@@ -1,0 +1,15 @@
+steps:
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'build']
+    env:
+    - 'REACT_APP_APIKEY=${_REACT_APP_APIKEY}'
+    - 'REACT_APP_AUTHDOMAIN=${_REACT_APP_AUTHDOMAIN}'
+    - 'REACT_APP_PROJECTID=${_REACT_APP_PROJECTID}'
+    - 'REACT_APP_STORAGEBUCKET=${_REACT_APP_STORAGEBUCKET}'
+    - 'REACT_APP_MESSAGINGSENDERID=${_REACT_APP_MESSAGINGSENDERID}'
+    - 'REACT_APP_APPID=${_REACT_APP_APPID}'
+    - 'REACT_APP_BACKEND_URL=${_REACT_APP_BACKEND_URL}'
+  - name: gcr.io/$PROJECT_ID/firebase
+    args: ['deploy', '--project=$PROJECT_ID', '--only=hosting']
